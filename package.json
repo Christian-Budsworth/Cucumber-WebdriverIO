@@ -1,0 +1,35 @@
+{
+  "name": "automation_tests",
+  "version": "1.0.0",
+  "description": "A quick demonstration of webdriverIO and cucumber being used to test the-internet.herokuapp.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Christian-Budsworth/Cucumber-WebdriverIO.git"
+  },
+  "author": "Christian Budsworth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Christian-Budsworth/Cucumber-WebdriverIO/issues"
+  },
+  "homepage": "https://github.com/Christian-Budsworth/Cucumber-WebdriverIO#readme",
+  "devDependencies": {
+    "@rpii/wdio-html-reporter": "^0.8.6",
+    "@wdio/cli": "^5.18.6",
+    "@wdio/cucumber-framework": "^5.18.6",
+    "@wdio/local-runner": "^5.18.6",
+    "@wdio/selenium-standalone-service": "^5.16.10",
+    "@wdio/spec-reporter": "^5.18.6",
+    "chromedriver": "^79.0.2",
+    "wdio-chromedriver-service": "^5.0.2",
+    "wdio-cucumber-reporter": "0.0.2"
+  },
+  "dependencies": {
+    "@wdio/sync": "^5.18.7",
+    "chai": "^4.2.0",
+    "webdriverio": "^5.18.7"
+  }
+}
