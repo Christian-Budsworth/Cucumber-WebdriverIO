@@ -25,7 +25,7 @@ exports.config = {
     // ===================
     // Test Configurations
     // ===================
-    logLevel: 'info',
+    logLevel: 'error',
     bail: 0,
  
     baseUrl: 'https://the-internet.herokuapp.com/',
