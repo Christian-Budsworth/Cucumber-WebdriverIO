@@ -1,8 +1,9 @@
 const page = require('./page');
+const url = require('../data/pageUrl')
 
 class login extends page {
     open() {
-        super.open('login');
+        super.open(url.login);
     };
     login(username, password) {
         console.log(this.username)
