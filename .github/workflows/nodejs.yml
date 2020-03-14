@@ -1,23 +1,38 @@
-name: Node.js CI
+name: Node CI
+
 
 on: [push]
+
 
 jobs:
   build:
 
+
     runs-on: ubuntu-latest
+
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x, 12.x]
+
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: nanasess/setup-chromedriver@master
+      with:
+       chromedriver-version: '77.0.3865.40'
+    - run: |
+       export DISPLAY=:99
+       chromedriver --url-base=/wd/hub &
+       sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
+    
+    - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm test config/wdio.conf.js
+    - name: npm install, build, and test
+      run: |
+        npm ci
+        npm test config/pipeline.js
       env:
         CI: true
