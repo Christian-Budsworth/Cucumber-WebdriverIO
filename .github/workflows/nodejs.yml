@@ -36,3 +36,7 @@ jobs:
         npm test config/pipeline.js
       env:
         CI: true
+    - uses: actions/upload-artifact@v1
+      with:
+        name: cucumber-report
+        path: reports/cucumber-results

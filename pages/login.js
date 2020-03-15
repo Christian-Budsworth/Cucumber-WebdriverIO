@@ -6,7 +6,6 @@ class login extends page {
         super.open(url.login);
     };
     login(username, password) {
-        console.log(this.username)
         this.username.setValue(username);
         this.password.setValue(password);
         this.submit.click();
