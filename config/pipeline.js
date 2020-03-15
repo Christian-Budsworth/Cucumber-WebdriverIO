@@ -1,6 +1,7 @@
 const { generate } = require('multiple-cucumber-html-reporter');
 const { removeSync } = require('fs-extra');
 
+
 exports.config = {
     path: '/wd/hub',
     // ==================
@@ -9,8 +10,6 @@ exports.config = {
     specs: [
         './features/*.feature'
     ],
-    // Patterns to exclude.
-
     // ============
     // Capabilities
     // ============
@@ -18,19 +17,18 @@ exports.config = {
     maxInstances: 10,
 
     capabilities: [{
-
         maxInstances: 5,
-
         browserName: 'chrome',
-
+        'goog:chromeOptions': {
+            args: ['headless', 'disable-gpu'],
+        },
     }],
-
     // ===================
     // Test Configurations
     // ===================
     logLevel: 'error',
     bail: 0,
- 
+
     baseUrl: 'https://the-internet.herokuapp.com/',
 
     waitforTimeout: 10000,
@@ -49,27 +47,24 @@ exports.config = {
         jsonFolder: 'reports/cucumber-results/json'
     }]],
     cucumberOpts: {
-        require: ['./steps/*.js'], 
-        format: ['pretty'], 
-        timeout: 60000,     // <number> timeout for step definitions
+        require: ['./steps/*.js'],
+        format: ['pretty'],
+        timeout: 60000,
     },
-
-    onPrepare: function() {
+    onPrepare: function () {
         removeSync('reports/cucumber-results')
     },
 
-    before: function() {
+    before: function () {
         const chai = require('chai')
         global.expect = chai.expect
         chai.Should()
     },
-
-    onComplete: function()  {
+    onComplete: function () {
         generate({
             jsonDir: 'reports/cucumber-results/json/',
             reportPath: 'reports/cucumber-results/',
             openReportInBrowser: true
         })
     }
-    
 }
