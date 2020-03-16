@@ -4,6 +4,7 @@ const customers = require('../data/customers')
 //go to a specific page. Journeys to get to the specific page are defined inside the page object.
 Given(/^I am on the "([^"]*)?" page$/, (page) => {
     const url = require(`../pages/${page}`);
+    browser.page = page;
     url.open();
 })
 
